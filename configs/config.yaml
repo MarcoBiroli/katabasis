@@ -1,0 +1,15 @@
+# Top-level config. Compose groups via the defaults list; override any leaf on
+# the command line, e.g.  python scripts/run_phase.py train=phase3 model=small
+defaults:
+  - data: t1x_core
+  - model: default
+  - train: phase4
+
+# Symmetry group pinned for the whole pipeline (see models/irreps.py).
+#   SE3 -> rotations + translations (chirality-preserving); reflection test off.
+#   O3  -> + reflections (parity-aware); reflection test on.
+group: SE3
+seed: 0
+device: auto
+run_dir: runs/default
+wandb: false

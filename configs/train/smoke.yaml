@@ -1,0 +1,21 @@
+# Tiny end-to-end run for CPU smoke tests / CI (seconds, not GPU-days).
+phase: 0
+lr: 2.0e-3
+batch_size: 8
+epochs: 2
+seed: 0
+t_alpha: 0.5
+t_beta: 1.5
+noise_sigma: 0.0
+lambda_c: 0.0
+lambda_e: 0.0
+endpoint_start_frac: 0.8
+contractivity_gate: 0.2
+contractivity_iters: 4
+endpoint_steps: 4
+eval_steps: 4
+aux_enabled: false
+aux_weight: 0.1
+aux_steps: 4
+joint_epoch_frac: 0.5
+grad_clip: 10.0

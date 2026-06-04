@@ -1,0 +1,13 @@
+# Halogen-substituted reactions only: transfer experiments (geometric transfer).
+subset: halogen_only
+db_path: data/halo8.db
+cache_dir: data/cache/halogen_only
+split_path: data/splits/halogen_only.json
+split_seed: 0
+fractions: [0.8, 0.1, 0.1]
+filter:
+  min_barrier: 5.0
+  min_rp_rmsd: 0.5
+  monotonic_noise_frac: 0.05
+  require_single_barrier: true
+  max_removed_frac: 0.30

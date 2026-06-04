@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Project artifacts
+runs/
+data/cache/
+data/*.db
+data/*.h5
+wandb/
+
+# Keep persisted splits and filter reports (small, reproducibility-critical)
+!data/splits/
+!data/splits/*.json
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+*.swp

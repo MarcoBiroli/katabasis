@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "katabasis"
+version = "0.1.0"
+description = "Physics-informed equivariant prediction of transition-state geometries and reaction pathways via contractive descent flows."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Katabasis authors" }]
+
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "torch>=2.4",
+    "e3nn>=0.5.1",
+    "ase>=3.23",
+    # Config is built on OmegaConf directly (YAML files + dotlist CLI overrides).
+    # hydra-core is intentionally not a hard dependency: it pins an old
+    # antlr4-python3-runtime that has no prebuilt wheel on some platforms.
+    "omegaconf>=2.3",
+    "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+wandb = ["wandb>=0.16"]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.6",
+    "black>=24.0",
+]
+
+[project.scripts]
+katabasis-smoke = "katabasis.scripts_entry:smoke_equivariance"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+katabasis = ["py.typed"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B", "SIM"]
+ignore = [
+    "E501",  # line length handled by black
+    "B008",  # function calls in argument defaults (hydra/e3nn idioms)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B017"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "needs_data: requires the Halo8 dataset to be present",
+]

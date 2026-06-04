@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # CPU torch wheel; e3nn + the rest from PyPI. omegaconf>=2.4 avoids the
+          # antlr4 build that the pinned hydra-core would require.
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install "omegaconf>=2.4.0.dev3"
+          pip install numpy scipy ase e3nn tqdm pytest pytest-cov ruff black
+          pip install -e . --no-deps
+
+      - name: Ruff (lint)
+        run: ruff check src tests scripts
+
+      - name: Black (format check)
+        run: black --check src tests scripts
+
+      - name: Equivariance smoke test (Phase-0 canary)
+        run: python scripts/smoke_equivariance.py --group SE3
+
+      - name: Pytest
+        run: pytest -q

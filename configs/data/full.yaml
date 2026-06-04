@@ -1,0 +1,13 @@
+# Complete Halo8 (t1x_core + halogen_only).
+subset: full
+db_path: data/halo8.db
+cache_dir: data/cache/full
+split_path: data/splits/full.json
+split_seed: 0
+fractions: [0.8, 0.1, 0.1]
+filter:
+  min_barrier: 5.0
+  min_rp_rmsd: 0.5
+  monotonic_noise_frac: 0.05
+  require_single_barrier: true
+  max_removed_frac: 0.30

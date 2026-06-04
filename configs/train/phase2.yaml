@@ -1,0 +1,10 @@
+# Phase 2: direct M -> saddle baseline (Network A, saddle loss only, no B).
+phase: 2
+lr: 1.0e-3
+batch_size: 16
+epochs: 100
+seed: 0
+aux_enabled: false
+aux_weight: 0.1
+aux_steps: 16
+grad_clip: 10.0

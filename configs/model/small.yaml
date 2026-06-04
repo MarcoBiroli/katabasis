@@ -1,0 +1,11 @@
+# Tiny model for CPU smoke tests / CI.
+embed_dim: 16
+n_layers: 2
+l_max: 2
+n_scalars: 16
+n_vectors: 8
+n_tensors: 4
+r_max: 4.0
+num_basis: 8
+radial_hidden: [32]
+time_dim: 8

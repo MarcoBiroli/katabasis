@@ -1,0 +1,11 @@
+# Equivariant backbone shared by Networks A and B (PLAN.md Phase 3 defaults).
+embed_dim: 32
+n_layers: 4
+l_max: 2
+n_scalars: 32
+n_vectors: 16
+n_tensors: 8
+r_max: 4.0
+num_basis: 8
+radial_hidden: [64]
+time_dim: 16   # Network B time embedding width

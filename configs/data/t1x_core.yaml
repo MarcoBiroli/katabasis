@@ -1,0 +1,13 @@
+# Transition1x-core subset (no halogens): Phase-1 sanity checks and ablations.
+subset: t1x_core
+db_path: data/halo8.db
+cache_dir: data/cache/t1x_core
+split_path: data/splits/t1x_core.json
+split_seed: 0
+fractions: [0.8, 0.1, 0.1]
+filter:
+  min_barrier: 5.0          # kcal/mol
+  min_rp_rmsd: 0.5          # Angstrom
+  monotonic_noise_frac: 0.05
+  require_single_barrier: true
+  max_removed_frac: 0.30

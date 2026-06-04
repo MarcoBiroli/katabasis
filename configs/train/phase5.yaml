@@ -1,0 +1,9 @@
+# Phase 5: joint fine-tuning (unfreeze both, LR / 10, ~10% of Phase 4 epochs).
+phase: 5
+lr: 1.0e-3               # divided by 10 inside the loop
+batch_size: 16
+epochs: 100
+joint_epoch_frac: 0.1
+aux_weight: 0.1
+aux_steps: 16
+grad_clip: 10.0
